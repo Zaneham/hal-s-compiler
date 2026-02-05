@@ -16,9 +16,11 @@ _build/
 Thumbs.db
 
 # OCR working files
-spec.pdf
-spec.txt
+*.txt
 ocr_spec.py
+
+# Large specification PDFs (exceeds GitHub 100MB limit)
+docs/*.pdf
 
 # Build scripts (Windows-specific)
 build.bat
