@@ -126,7 +126,6 @@ If you find dead languages interesting:
 
 ## Fun Facts
 
-- HAL/S was named for three things: **H**igher **A**ssembly **L**anguage, the **S**pace Shuttle, and possibly Hal Laning, an MIT engineer who contributed to the design. Intermetrics denied the Laning connection. No one believes them.
 - The language has three input lines per statement: E-line (exponents), M-line (main), and S-line (subscripts). This was designed for mathematical notation on 1970s line printers. It looks exactly as unhinged as you'd expect.
 - HAL/S has no dynamic memory allocation. Every variable's lifetime is known at compile time. This is a feature, not a limitation - you don't want malloc failing at Mach 25.
 - The Backup Flight System was written by Rockwell instead of IBM to ensure no common bugs. Two teams, two buildings, one specification. They found a specification ambiguity once. It was a whole thing.
