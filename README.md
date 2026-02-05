@@ -4,7 +4,6 @@
 
 A modern compiler for HAL/S (High-order Assembly Language/Shuttle), written in OCaml. Because the Space Shuttle's programming language deserves to live on.
 
-*Intermetrics built the original in 1976. They had government contracts and mainframes. We have OCaml and stubbornness.*
 
 ## What is HAL/S?
 
