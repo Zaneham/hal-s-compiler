@@ -161,10 +161,5 @@ Based in New Zealand, where it's already tomorrow and the closest thing to a spa
 
 Apache 2.0
 
-Because aerospace heritage should be preserved openly, and anyone interested in 1970s flight software design shouldn't have to navigate license complexity.
-
 ---
 
-*Built with OCaml, archival research, and respect for the engineers who wrote software that flew.*
-
-*"Houston, we have a type error" - No one, ever, because the compiler caught it*
