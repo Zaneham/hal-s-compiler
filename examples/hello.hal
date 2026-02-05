@@ -1,0 +1,27 @@
+/* HAL/S Example Program
+   A simple demonstration of HAL/S syntax
+*/
+
+PROGRAM HELLO;
+
+  DECLARE I INTEGER;
+  DECLARE X SCALAR;
+  DECLARE V VECTOR(3);
+  DECLARE MSG CHARACTER(20);
+
+  /* Initialize variables */
+  I = 0;
+  X = 3.14159;
+  V = VECTOR(1.0, 0.0, 0.0);
+
+  /* Simple loop */
+  DO FOR I = 1 TO 10;
+    X = X + 1.0;
+  END;
+
+  /* Conditional */
+  IF X > 10.0 THEN
+    X = 10.0;
+  END;
+
+CLOSE HELLO;

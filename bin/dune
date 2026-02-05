@@ -1,0 +1,4 @@
+(executable
+ (name halsc)
+ (public_name halsc)
+ (libraries hals))

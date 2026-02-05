@@ -1,0 +1,27 @@
+# OCaml/Dune build artifacts
+_build/
+*.install
+*.merlin
+.merlin
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# OCR working files
+spec.pdf
+spec.txt
+ocr_spec.py
+
+# Build scripts (Windows-specific)
+build.bat
+
+# opam local switch
+_opam/

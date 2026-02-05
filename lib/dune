@@ -1,0 +1,11 @@
+(library
+ (name hals)
+ (public_name hals)
+ (libraries str)
+ (preprocess (pps ppx_deriving.show ppx_deriving.eq)))
+
+(ocamllex lexer)
+
+(menhir
+ (modules parser)
+ (flags --explain --dump))

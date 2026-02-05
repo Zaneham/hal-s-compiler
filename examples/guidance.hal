@@ -1,0 +1,73 @@
+/* HAL/S Guidance System Example
+
+   Demonstrates real-time features:
+   - Tasks and scheduling
+   - Vector/Matrix operations
+   - Event handling
+*/
+
+PROGRAM GUIDANCE_EXECUTIVE;
+
+  DECLARE POSITION VECTOR(3);
+  DECLARE VELOCITY VECTOR(3);
+  DECLARE ATTITUDE MATRIX(3,3);
+  DECLARE DELTA_T SCALAR CONSTANT INITIAL(0.04);
+  DECLARE NAV_READY EVENT LATCHED;
+
+  /* Initialize state vectors */
+  POSITION = VECTOR(0.0, 0.0, 0.0);
+  VELOCITY = VECTOR(0.0, 0.0, 0.0);
+
+  /* Schedule the navigation task at 25 Hz */
+  SCHEDULE NAV_TASK PRIORITY(10);
+
+  /* Schedule attitude control at 40 Hz */
+  SCHEDULE ATTITUDE_TASK PRIORITY(5);
+
+  /* Main executive loop */
+  DO;
+    WAIT FOR NAV_READY;
+    CALL UPDATE_GUIDANCE;
+  END;
+
+CLOSE GUIDANCE_EXECUTIVE;
+
+
+TASK NAV_TASK;
+
+  DECLARE ACCEL VECTOR(3);
+  DECLARE NEW_POS VECTOR(3);
+  DECLARE NEW_VEL VECTOR(3);
+
+  /* Read accelerometer */
+  CALL READ_IMU(ACCEL);
+
+  /* Integrate equations of motion */
+  NEW_VEL = VELOCITY + ACCEL * DELTA_T;
+  NEW_POS = POSITION + VELOCITY * DELTA_T;
+
+  /* Update global state */
+  VELOCITY = NEW_VEL;
+  POSITION = NEW_POS;
+
+  /* Signal navigation complete */
+  SIGNAL NAV_READY;
+
+CLOSE NAV_TASK;
+
+
+TASK ATTITUDE_TASK;
+
+  DECLARE RATE VECTOR(3);
+  DECLARE CMD_TORQUE VECTOR(3);
+
+  /* Read rate gyros */
+  CALL READ_GYROS(RATE);
+
+  /* Compute control law */
+  CMD_TORQUE = -0.5 * RATE;
+
+  /* Command actuators */
+  CALL WRITE_RCS(CMD_TORQUE);
+
+CLOSE ATTITUDE_TASK;
